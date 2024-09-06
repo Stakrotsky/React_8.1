@@ -8,15 +8,15 @@ export const Game = () => {
 
 	useEffect(() => {
 		const unsubscribe = store.subscribe(() => {
-			setRender((prev) => prev + 1); // Обновление компонента при изменении состояния
+			setRender((prev) => prev + 1);
 		});
-		return () => unsubscribe(); // Отписка при размонтировании компонента
+		return () => unsubscribe();
 	}, []);
 
 	const onCellClick = (index) => {
 		const { field, currentPlayer, isGameEnded } = store.getState();
 
-		if (field[index] || isGameEnded) return; // Проверка на окончание игры или занятость ячейки
+		if (field[index] || isGameEnded) return;
 
 		const newField = field.slice();
 		newField[index] = currentPlayer;
