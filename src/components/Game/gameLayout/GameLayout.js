@@ -1,25 +1,19 @@
 import styles from './GameLayout.module.css';
 import { FieldLayout } from './Field/FieldLayout/FieldLayout';
 import { InformationLayout } from './Information/InformationLayout/InformationLayout';
+import { store } from '../../../store';
 import PropTypes from 'prop-types';
 
-export const GameLayout = ({
-	currentPlayer,
-	isDraw,
-	isGameEnded,
-	field,
-	onCellClick,
-	resetGame,
-}) => {
+export const GameLayout = () => {
+	const resetGame = () => {
+		store.dispatch({ type: 'RESTART_GAME' });
+	};
+
 	return (
 		<div className={styles.container}>
 			<h2>Крестики-нолики</h2>
-			<InformationLayout
-				currentPlayer={currentPlayer}
-				isDraw={isDraw}
-				isGameEnded={isGameEnded}
-			/>
-			<FieldLayout field={field} onCellClick={onCellClick} />
+			<InformationLayout />
+			<FieldLayout />
 			<button className={styles['reset-button']} onClick={resetGame}>
 				Начать с начала
 			</button>

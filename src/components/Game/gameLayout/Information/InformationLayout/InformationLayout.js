@@ -1,8 +1,10 @@
 import styles from './InformationLayout.module.css';
 import './InformationLayout.module.css';
 import PropTypes from 'prop-types';
+import { store } from '../../../../../store';
 
-export const InformationLayout = ({ currentPlayer, isDraw, isGameEnded }) => {
+export const InformationLayout = () => {
+	const { currentPlayer, isGameEnded, isDraw } = store.getState();
 	return (
 		<div className={styles.status} id="status">
 			{isDraw ? (
